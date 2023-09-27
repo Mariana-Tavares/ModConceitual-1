@@ -1,0 +1,18 @@
+CREATE TABLE Projeto (
+    diretorio_nome VARCHAR,
+    ID INT PRIMARY KEY,
+    fk_Casos_de_uso_ID INT
+);
+
+CREATE TABLE Casos_de_uso (
+    ID INT PRIMARY KEY,
+    caso VARCHAR,
+    descricao VARCHAR,
+    status VARCHAR,
+    Tipo varchar
+);
+ 
+ALTER TABLE Projeto ADD CONSTRAINT FK_Projeto_2
+    FOREIGN KEY (fk_Casos_de_uso_ID)
+    REFERENCES Casos_de_uso (ID)
+    ON DELETE CASCADE;

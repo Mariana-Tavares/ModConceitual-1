@@ -1,0 +1,23 @@
+/* Lógico_1: */
+
+CREATE TABLE Matricula (
+    matricula INT,
+    data DATE,
+    ID INT PRIMARY KEY,
+    fk_Aluno_ID INT
+);
+
+CREATE TABLE Aluno (
+    ID INT PRIMARY KEY,
+    nome Varchar,
+    Data_nascimento DATE,
+    endereco VARCHAR,
+    telefone VARCHAR,
+    CPF INT(11),
+    identidade INT(7)
+);
+ 
+ALTER TABLE Matricula ADD CONSTRAINT FK_Matricula_2
+    FOREIGN KEY (fk_Aluno_ID)
+    REFERENCES Aluno (ID)
+    ON DELETE RESTRICT;

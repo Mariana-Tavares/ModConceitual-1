@@ -1,0 +1,23 @@
+/* Lógico_1: */
+
+CREATE TABLE ligacao (
+    numero_discado INT,
+    ID INT PRIMARY KEY,
+    data DATE,
+    hora FLOAT,
+    tipo_ligacao VARCHAR,
+    pulsos INT,
+    minutos INT
+);
+
+CREATE TABLE agenda (
+    ID INT PRIMARY KEY,
+    contato VARCHAR,
+    numero INT,
+    fk_ligacao_ID INT
+);
+ 
+ALTER TABLE agenda ADD CONSTRAINT FK_agenda_2
+    FOREIGN KEY (fk_ligacao_ID)
+    REFERENCES ligacao (ID)
+    ON DELETE RESTRICT;

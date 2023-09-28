@@ -1,0 +1,31 @@
+/* ModLógico-6: */
+
+CREATE TABLE Anuncio (
+    ID INT PRIMARY KEY,
+    tipo_anuncio VARCHAR,
+    texto VARCHAR(50),
+    data_publicacao DATE,
+    data_expiracao DATE,
+    valor_anuncio FLOAT,
+    sessao VARCHAR
+);
+
+CREATE TABLE Cliente (
+    ID INT PRIMARY KEY,
+    nome VARCHAR
+);
+
+CREATE TABLE Publica (
+    fk_Cliente_ID INT,
+    fk_Anuncio_ID INT
+);
+ 
+ALTER TABLE Publica ADD CONSTRAINT FK_Publica_1
+    FOREIGN KEY (fk_Cliente_ID)
+    REFERENCES Cliente (ID)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Publica ADD CONSTRAINT FK_Publica_2
+    FOREIGN KEY (fk_Anuncio_ID)
+    REFERENCES Anuncio (ID)
+    ON DELETE SET NULL;

@@ -1,0 +1,30 @@
+/* ModLógico-4: */
+
+CREATE TABLE Cliente (
+    ID INT PRIMARY KEY,
+    fk_Festa_Tema_ID INT
+);
+
+CREATE TABLE Festa_Tema (
+    ID INT PRIMARY KEY,
+    Endereco VARCHAR,
+    Nome VARCHAR,
+    Valor FLOAT,
+    Cor_Toalha VARCHAR,
+    fk_Item_ID INT
+);
+
+CREATE TABLE Item (
+    Nome VARCHAR,
+    ID INT PRIMARY KEY
+);
+ 
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_2
+    FOREIGN KEY (fk_Festa_Tema_ID)
+    REFERENCES Festa_Tema (ID)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Festa_Tema ADD CONSTRAINT FK_Festa_Tema_2
+    FOREIGN KEY (fk_Item_ID)
+    REFERENCES Item (ID)
+    ON DELETE RESTRICT;

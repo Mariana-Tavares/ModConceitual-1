@@ -1,0 +1,64 @@
+
+
+CREATE TABLE Teste (
+    ID INT PRIMARY KEY,
+    Data Date,
+    N_Questoes INT,
+    Disciplina VARCHAR
+);
+
+CREATE TABLE Disciplina (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR,
+    fk_Teste_ID INT,
+    fk_Materia_ID INT
+);
+
+CREATE TABLE Questoes (
+    ID INT PRIMARY KEY,
+    Materia VARCHAR,
+    Gabarito VARCHAR,
+    Bimestre INT,
+    Texto VARCHAR
+);
+
+CREATE TABLE Materia (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR
+);
+
+CREATE TABLE Serie (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR,
+    fk_Materia_ID INT
+);
+
+CREATE TABLE Auto_Rel__2 (
+    fk_Teste_ID INT,
+    fk_Questoes_ID INT
+);
+ 
+ALTER TABLE Disciplina ADD CONSTRAINT FK_Disciplina_2
+    FOREIGN KEY (fk_Teste_ID)
+    REFERENCES Teste (ID)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Disciplina ADD CONSTRAINT FK_Disciplina_3
+    FOREIGN KEY (fk_Materia_ID)
+    REFERENCES Materia (ID)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Serie ADD CONSTRAINT FK_Serie_2
+    FOREIGN KEY (fk_Materia_ID)
+    REFERENCES Materia (ID)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Auto_Rel__2 ADD CONSTRAINT FK_Auto_Rel__2_1
+    FOREIGN KEY (fk_Teste_ID)
+    REFERENCES Teste (ID)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Auto_Rel__2 ADD CONSTRAINT FK_Auto_Rel__2_2
+    FOREIGN KEY (fk_Questoes_ID)
+    REFERENCES Questoes (ID)
+    ON DELETE RESTRICT;
